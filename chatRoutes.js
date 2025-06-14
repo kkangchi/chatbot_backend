@@ -4,9 +4,7 @@ import fs from 'fs';
 
 const router = express.Router();
 
-const serviceAccount = JSON.parse(
-  fs.readFileSync('./firebaseServiceKey.json', 'utf8')
-);
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
 
 if (!admin.apps.length) {
   admin.initializeApp({
